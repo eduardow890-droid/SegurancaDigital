@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-labelledby="t"><title id="t">Notebook pedindo senha e celular pedindo verificação</title>
+<rect width="480" height="240" rx="14" fill="#eef0ea"/>
+<g font-family="Manrope,Arial,sans-serif" text-anchor="middle" fill="#172b35">
+<text x="130" y="36" font-size="18" font-weight="700">1. Senha</text>
+<text x="365" y="36" font-size="18" font-weight="700">2. Verificação</text>
+<rect x="40" y="55" width="180" height="115" rx="8"/><rect x="48" y="63" width="164" height="99" rx="4" fill="#fff"/><rect x="30" y="170" width="200" height="10" rx="5" fill="#29434f"/>
+<rect x="122" y="76" width="16" height="12" rx="2"/><path d="M125 76v-4a5 5 0 0 1 10 0v4" fill="none" stroke="#172b35" stroke-width="2.5"/>
+<rect x="70" y="98" width="120" height="12" rx="2" fill="#d8ddd4"/><rect x="70" y="116" width="120" height="12" rx="2" fill="#d8ddd4"/>
+<g fill="#172b35"><circle cx="80" cy="122" r="2"/><circle cx="88" cy="122" r="2"/><circle cx="96" cy="122" r="2"/><circle cx="104" cy="122" r="2"/><circle cx="112" cy="122" r="2"/></g>
+<rect x="70" y="136" width="120" height="16" rx="3" fill="#2f7a63"/><text x="130" y="148" font-size="10" fill="#fff" font-weight="700">Entrar</text>
+<path d="M238 112h58" stroke="#2f7a63" stroke-width="3" fill="none"/><path d="M294 104l12 8-12 8z" fill="#2f7a63" stroke="none"/>
+<rect x="335" y="50" width="60" height="130" rx="10"/><rect x="341" y="62" width="48" height="106" rx="4" fill="#fff"/>
+<circle cx="360" cy="95" r="9" fill="none" stroke="#2f7a63" stroke-width="4"/><path d="M369 95h14M378 95v7" stroke="#2f7a63" stroke-width="4" fill="none"/>
+<text x="365" y="130" font-size="9">Foi você?</text><rect x="347" y="140" width="36" height="16" rx="3" fill="#2f7a63"/><text x="365" y="151" font-size="9" fill="#fff" font-weight="700">Aprovar</text>
+<text x="240" y="214" font-size="13" font-weight="500" fill="#29434f">Mesmo que a senha vaze, o segundo passo protege a conta.</text></g></svg>

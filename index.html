@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Segurança Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav aria-label="Principal"><b>Segurança Digital</b><button id="mt" class="btn alt" aria-expanded="false" aria-controls="nl">Menu</button><div id="nl"><a href="#conceitos">Aprender</a><a href="#lab">Praticar</a><a href="#painel">Acompanhar</a><a href="#empresas">Empresas</a><a href="#biblioteca">Biblioteca</a></div><button id="th" class="btn alt" aria-label="Alternar tema claro e escuro">Tema escuro☀️</button></nav>
+
+<header class="wrap hero">
+<div>
+<h1>Reconheça o golpe antes de clicar.</h1>
+<p>Um portal para aprender os conceitos de segurança da informação e LGPD, praticar com simulações e acompanhar seu progresso. Tudo roda no seu navegador, com dados fictícios.</p>
+<p><a class="btn" href="#lab">Praticar no laboratório</a></p>
+</div>
+<div class="card" id="duel"></div>
+</header>
+
+<section id="conceitos"><div class="wrap">
+<h2>Conceitos essenciais</h2>
+<p class="lead">Quatro módulos para entender o terreno antes de praticar.</p>
+<div class="tabs" role="tablist" data-tabs="c">
+<button role="tab" aria-selected="true">Fundamentos</button><button role="tab" aria-selected="false">Ameaças digitais</button><button role="tab" aria-selected="false">LGPD</button><button role="tab" aria-selected="false">Boas práticas</button></div>
+<div class="pane" data-pane="c"><h3>Fundamentos: a tríade CID</h3><p><b>Confidencialidade:</b> só quem tem autorização acessa a informação.</p><p><b>Integridade:</b> a informação não é alterada sem permissão nem sem registro.</p><p><b>Disponibilidade:</b> a informação está acessível quando quem precisa dela precisa.</p></div>
+<div class="pane" data-pane="c" hidden><h3>Ameaças digitais</h3><p><b>Phishing:</b> mensagem falsa que imita uma marca ou pessoa para roubar dados ou fazer você clicar.</p><p><b>Malware:</b> software malicioso, como vírus, spyware e adware.</p><p><b>Ransomware:</b> sequestra arquivos e cobra resgate para devolvê-los.</p><p><b>Engenharia social:</b> manipula pessoas, não sistemas, usando urgência, medo ou autoridade.</p></div>
+<div class="pane" data-pane="c" hidden><h3>Proteção de dados e LGPD</h3><p><b>Dado pessoal</b> identifica ou pode identificar uma pessoa (nome, CPF, e-mail). <b>Dado pessoal sensível</b> envolve origem racial, religião, opinião política, saúde, vida sexual, dado genético ou biométrico.</p><p><b>Direitos do titular:</b> confirmação de tratamento, acesso, correção, anonimização, portabilidade, eliminação e informação sobre compartilhamento.</p><p><b>Empresas</b> precisam de base legal, finalidade clara, coleta mínima, medidas de segurança e comunicação de incidentes relevantes.</p></div>
+<div class="pane" data-pane="c" hidden><h3>Boas práticas</h3><p>Use senhas longas e únicas, com um gerenciador de senhas. Ative a autenticação em dois fatores. Faça backups e teste a restauração. Mantenha sistemas atualizados e desconfie de links e anexos inesperados.</p><figure class="fig"><img src="img/autenticacao-dois-fatores.png" width="480" height="240" loading="lazy" alt="Notebook pedindo senha e celular pedindo verificação em duas etapas"></figure></div>
+</div></section>
+
+<section id="ameacas"><div class="wrap"><h2>Central de ameaças</h2><p class="lead">Filtre por categoria e abra uma ameaça para ver como funciona, como identificar, como se proteger e o que fazer.</p><div class="opts" id="thf"></div><div id="thl"></div></div></section>
+<section id="trilhas"><div class="wrap"><h2>Trilhas de aprendizagem</h2><p class="lead">Uma ordem sugerida de atividades. Os passos são marcados conforme você conclui cada uma, neste navegador.</p><div class="grid" id="trk"></div></div></section>
+<section id="lab"><div class="wrap">
+<h2>Laboratório digital</h2>
+<p class="lead">Quatro experiências práticas. Nada é enviado nem armazenado: as senhas e os dados que você digita ficam só no navegador.</p>
+<div class="tabs" role="tablist" data-tabs="l">
+<button role="tab" aria-selected="true">Phishing</button><button role="tab" aria-selected="false">Senhas</button><button role="tab" aria-selected="false">Classificador</button><button role="tab" aria-selected="false">Incidentes</button></div>
+<div class="pane" data-pane="l" id="phish"></div>
+<div class="pane" data-pane="l" hidden>
+<h3>Avaliador de senhas</h3>
+<label for="pw" class="meta">Digite uma senha para testar (não a sua senha real).</label>
+<input id="pw" type="password" autocomplete="off" spellcheck="false">
+<div class="bar"><i id="pwbar"></i></div>
+<div id="pwtime" class="big" aria-live="polite"></div>
+<div id="pwres" class="meta" aria-live="polite">Comece a digitar.</div>
+<ul class="chk" id="pwchk"></ul>
+</div>
+<div class="pane" data-pane="l" id="classif" hidden></div>
+<div class="pane" data-pane="l" id="incid" hidden></div>
+</div></section>
+
+<section id="diag"><div class="wrap"><h2>Diagnóstico de segurança digital</h2><p class="lead">Dez perguntas sobre seus hábitos. O relatório é educativo e não substitui uma auditoria.</p><div class="pane" id="dgb" style="border-radius:10px"></div></div></section>
+<section id="quiz"><div class="wrap">
+<h2>Desafio de conhecimentos</h2>
+<p class="lead">Cinco perguntas com pontuação e explicação.</p>
+<div class="pane" id="quizbox" style="border-radius:10px"></div>
+</div></section>
+
+<section id="painel"><div class="wrap"><h2>Painel de evolução</h2><p class="lead">Seu progresso fica salvo apenas neste navegador, sem cadastro.</p><div id="pan"></div><p><button class="btn alt" id="rst">Zerar progresso</button></p></div></section>
+<section id="empresas"><div class="wrap"><h2>Segurança para pequenas empresas</h2><p class="lead">Marque o que sua empresa já faz. É um guia educativo, não uma auditoria.</p><div class="split"><figure class="fig"><img src="img/pequena-empresa-notebook.png" width="678" height="452" loading="lazy" alt="Dono de uma padaria olhando para o notebook no balcão"><figcaption>Pequenos negócios também são alvo de golpes e vazamentos.</figcaption></figure><div class="pane" id="chk" style="border-radius:10px"></div></div></div></section>
+<section id="biblioteca"><div class="wrap">
+<h2>Biblioteca</h2>
+<p class="lead">Materiais de referência para aprofundar.</p>
+<div class="grid">
+<div class="card"><h3>LGPD (Lei 13.709/2018)</h3><p>Texto da lei no portal do Planalto.</p></div>
+<div class="card"><h3>ANPD</h3><p>Orientações e guias da Autoridade Nacional de Proteção de Dados.</p></div>
+<div class="card"><h3>CERT.br</h3><p>Cartilha de Segurança para Internet.</p></div>
+<div class="card"><h3>Checklist rápido</h3><p>2FA ligado, senhas únicas, backup testado, sistema atualizado.</p></div>
+</div></div></section>
+
+<footer><div class="wrap fgrid">
+<div><b>Segurança Digital</b><p>Projeto educativo de segurança da informação e proteção de dados. As simulações usam dados fictícios e nenhuma informação é coletada. O progresso fica apenas neste navegador.</p></div>
+<div><b>Fontes oficiais</b><p><a href="https://www.gov.br/anpd" rel="noopener">ANPD</a><br><a href="https://www.cert.br" rel="noopener">CERT.br</a><br><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" rel="noopener">LGPD (Lei 13.709/2018)</a></p></div>
+<div><b>Navegar</b><p><a href="#conceitos">Conceitos</a><br><a href="#ameacas">Ameaças</a><br><a href="#diag">Diagnóstico</a><br><a href="#empresas">Empresas</a></p></div>
+</div></footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
