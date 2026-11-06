@@ -1,10 +1,34 @@
-var ICONS={c:['🧱','🎣','⚖️','🔑'],l:['📨','🔐','🗂️','🚨']};
 // Abas
 document.querySelectorAll('[data-tabs]').forEach(function(t){
   var key=t.dataset.tabs, btns=t.querySelectorAll('button'), panes=document.querySelectorAll('[data-pane="'+key+'"]');
-  btns.forEach(function(b,i){if(ICONS[key])b.textContent=ICONS[key][i]+' '+b.textContent;b.addEventListener('click',function(){
-    btns.forEach(function(x,j){x.setAttribute('aria-selected',i===j);panes[j].hidden=i!==j;});
-  });});
+  function selectTab(index){
+    btns.forEach(function(b,j){
+      var selected=j===index;
+      b.setAttribute('aria-selected',selected);
+      b.setAttribute('tabindex',selected?'0':'-1');
+      panes[j].hidden=!selected;
+    });
+  }
+  btns.forEach(function(b,i){
+    b.id='tab-'+key+'-'+i;
+    b.setAttribute('tabindex',b.getAttribute('aria-selected')==='true'?'0':'-1');
+    if(!panes[i].id)panes[i].id='panel-'+key+'-'+i;
+    b.setAttribute('aria-controls',panes[i].id);
+    panes[i].setAttribute('role','tabpanel');
+    panes[i].setAttribute('aria-labelledby',b.id);
+    b.addEventListener('click',function(){selectTab(i);});
+    b.addEventListener('keydown',function(e){
+      var index=i;
+      if(e.key==='ArrowRight')index=(i+1)%btns.length;
+      else if(e.key==='ArrowLeft')index=(i+btns.length-1)%btns.length;
+      else if(e.key==='Home')index=0;
+      else if(e.key==='End')index=btns.length-1;
+      else return;
+      e.preventDefault();
+      selectTab(index);
+      btns[index].focus();
+    });
+  });
 });
 
 // Mini-quiz reutilizável (conteúdo sempre via textContent)
@@ -14,7 +38,9 @@ function makeQuiz(box,title,items,intro,cb){
   function show(){
     box.textContent='';
     if(i>=items.length){
-      if(cb)cb(score,items.length);box.appendChild(el('h3','Resultado: '+score+' de '+items.length));
+      if(cb)cb(score,items.length);
+      var result=el('h3','Resultado: '+score+' de '+items.length);
+      result.setAttribute('tabindex','-1');box.appendChild(result);result.focus();
       box.appendChild(el('p',score===items.length?'Excelente! Você acertou tudo.':score>=items.length/2?'Bom resultado. Revise as explicações dos erros.':'Vale refazer e ler os conceitos acima.','meta'));
       var r=el('button','Refazer','btn');r.onclick=function(){i=0;score=0;show();};box.appendChild(r);return;
     }
@@ -82,7 +108,6 @@ function ht(s){var y=s/31557600;if(s<1)return'menos de 1 segundo';if(s<60)return
 
 // Tema
 var tb=document.getElementById('th');
-tb.onclick=function(){var l=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=l?'dark':'light';tb.textContent=l?'☀️':'🌙';};
 
 // Desafio relâmpago
 (function(){
@@ -123,7 +148,9 @@ tb.onclick=function(){var l=document.documentElement.dataset.theme==='light';doc
  function show(){
   box.textContent='';
   if(i>=mails.length){
-   prog('phish',sc,mails.length);box.appendChild(el('h3','Resultado: '+sc+' de '+mails.length));
+   prog('phish',sc,mails.length);
+   var result=el('h3','Resultado: '+sc+' de '+mails.length);
+   result.setAttribute('tabindex','-1');box.appendChild(result);result.focus();
    var r=el('button','Refazer','btn');r.onclick=function(){i=0;sc=0;show();};box.appendChild(r);return;
   }
   var m=mails[i];
@@ -217,7 +244,8 @@ document.getElementById('rst').onclick=function(){P={};try{localStorage.removeIt
   box.textContent='';
   if(i>=Q.length){
    var sc=a.reduce(function(x,y){return x+y;},0);prog('diag',sc,100);
-   box.appendChild(el('h3',sc+'/100: '+(sc>=80?'Boa conscientização':sc>=50?'Conscientização em desenvolvimento':'Vale reforçar o básico')));
+   var result=el('h3',sc+'/100: '+(sc>=80?'Boa conscientização':sc>=50?'Conscientização em desenvolvimento':'Vale reforçar o básico'));
+   result.setAttribute('tabindex','-1');box.appendChild(result);result.focus();
    var w=Q.filter(function(q,k){return a[k]<10;});
    if(w.length){box.appendChild(el('p','Pontos que precisam de atenção:','meta'));var u=el('ul','','chk');w.forEach(function(q){u.appendChild(el('li',q[1]));});box.appendChild(u);}
    var r=el('button','Refazer','btn');r.onclick=function(){i=0;a=[];show();};box.appendChild(r);return;
@@ -270,6 +298,7 @@ document.getElementById('rst').onclick=function(){P={};try{localStorage.removeIt
 (function(){
  var L=['Senhas únicas, com gerenciador de senhas','Verificação em duas etapas no e-mail e nos sistemas','Backup periódico, com teste de restauração','Computadores e sistemas atualizados','Cada pessoa com seu acesso, revogado quando sai da empresa','Dados de clientes acessíveis só a quem precisa','Notebooks e celulares com bloqueio de tela e criptografia','Equipe orientada sobre golpes e phishing','Plano para incidentes: quem avisar e como registrar','Descarte seguro de documentos e equipamentos'],
  box=document.getElementById('chk'),S=[],cnt=el('p','','meta');
+ cnt.setAttribute('aria-live','polite');
  try{S=JSON.parse(localStorage.getItem('sdc')||'[]');}catch(e){}if(!Array.isArray(S))S=[];
  box.appendChild(cnt);
  function upd(){var n=S.filter(Boolean).length;cnt.textContent=n+' de '+L.length+' práticas em dia';P.chk=Math.round(100*n/L.length);save();}
@@ -290,4 +319,3 @@ mt.onclick=function(){var o=nl.classList.toggle('open');mt.setAttribute('aria-ex
 nl.addEventListener('click',function(e){if(e.target.tagName==='A'){nl.classList.remove('open');mt.setAttribute('aria-expanded','false');}});
 var G={conceitos:'#conceitos',ameacas:'#conceitos',trilhas:'#conceitos',lab:'#lab',diag:'#lab',quiz:'#lab',painel:'#painel',empresas:'#empresas',biblioteca:'#biblioteca'};
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)nl.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===G[en.target.id])a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});});},{rootMargin:'-40% 0px -55% 0px'});Object.keys(G).forEach(function(id){var s=document.getElementById(id);if(s)io.observe(s);});}
-document.querySelectorAll('.tabs button').forEach(function(b){b.textContent=b.textContent.replace(/^\S+\s/,'');});

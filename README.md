@@ -20,4 +20,6 @@ Confirme a licença e a origem de cada foto antes de publicar e, se exigido, adi
 - `equipe-escritorio-reuniao.webp`
 - `mensagem-suspeita-celular.webp`
 - `descarte-seguro-documentos.webp`
+- `compartilhamento.png`
+
 # SegurancaDigital
