@@ -89,6 +89,7 @@ footer{padding:40px 0;font-size:14px}footer b{color:var(--tx)}footer p{margin:.4
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
 .fig{margin:0 0 20px}.fig img{width:100%;height:auto;display:block;border-radius:8px}
+.fig-crop img{aspect-ratio:16/10;object-fit:cover;object-position:center 35%}
 .fig figcaption{font-size:14px;color:var(--mu);margin-top:8px}
 .split{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:start}
 details .fig{max-width:420px;margin:12px 0}

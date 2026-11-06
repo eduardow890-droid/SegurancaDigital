@@ -13,8 +13,11 @@ Site educativo de segurança da informação e proteção de dados (HTML, CSS e 
 - `img/`: imagens (WebP e SVG)
 
 ## Imagens
-Confirme a licença de cada foto antes de publicar e, se exigido, adicione o crédito no rodapé.
+Confirme a licença e a origem de cada foto antes de publicar e, se exigido, adicione o crédito no rodapé.
 - `pequena-empresa-notebook.webp`
 - `ligacao-suspeita-home-office.webp`
 - `autenticacao-dois-fatores.svg` (criada para o projeto)
+- `equipe-escritorio-reuniao.webp`
+- `mensagem-suspeita-celular.webp`
+- `descarte-seguro-documentos.webp`
 # SegurancaDigital

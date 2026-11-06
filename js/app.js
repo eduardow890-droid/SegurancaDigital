@@ -233,6 +233,11 @@ document.getElementById('rst').onclick=function(){P={};try{localStorage.removeIt
 
 // Central de ameaças
 (function(){
+ var THREAT_IMG={
+  'Phishing':{src:'img/mensagem-suspeita-celular.webp',alt:'Homem olhando o celular com expressão de dúvida diante de uma mensagem',legenda:'Mensagem com urgência e link? Pare e confira antes de clicar.',width:1000,height:563},
+  'Falso suporte':{src:'img/ligacao-suspeita-home-office.webp',alt:'Mulher ao telefone anotando algo, com um notebook aberto na mesa',legenda:'Ligação inesperada pedindo dados? Desligue e ligue você mesmo para o canal oficial.',width:678,height:452},
+  'Compartilhamento indevido':{src:'img/equipe-escritorio-reuniao.webp',alt:'Equipe reunida em volta de uma mesa, analisando dados em monitores e notebooks',legenda:'Segurança no trabalho é decisão de equipe, não só de TI.',width:700,height:1000,crop:true}
+ };
  var TH=[
  ['Phishing','Golpes digitais','Mensagem falsa que imita uma marca ou pessoa para roubar dados ou induzir um clique. Risco: acesso indevido a contas e prejuízo financeiro.','Urgência, ameaça, remetente estranho e link cujo destino real é outro.','Confira o remetente e o destino do link; prefira digitar o endereço do site.','Troque as senhas, ative a verificação em duas etapas e avise o banco ou a empresa.'],
  ['Falso suporte','Golpes digitais','Golpista finge ser a central de uma loja ou banco e pede chamada de vídeo, código ou Pix. Risco: perda de dinheiro e controle do aparelho.','Contato que você não pediu, pedido de código, de compartilhamento de tela ou de pagamento.','Nunca compartilhe tela nem códigos; ligue você mesmo para o canal oficial.','Encerre o contato, avise o banco, troque as senhas e registre a ocorrência.'],
@@ -246,7 +251,14 @@ document.getElementById('rst').onclick=function(){P={};try{localStorage.removeIt
   f.textContent='';l.textContent='';
   cats.forEach(function(c){var b=el('button',c,'btn'+(c===cur?'':' alt'));b.style.flex='0 0 auto';b.onclick=function(){cur=c;draw();};f.appendChild(b);});
   TH.filter(function(t){return cur==='Todas'||t[1]===cur;}).forEach(function(t){
-   var d=document.createElement('details');d.appendChild(el('summary',t[0]+' ('+t[1]+')'));if(t[0]==='Falso suporte'){var fg=el('figure','','fig'),im=document.createElement('img');im.src='img/ligacao-suspeita-home-office.webp';im.alt='Mulher ao telefone anotando algo, com um notebook aberto na mesa';im.width=678;im.height=452;im.loading='lazy';fg.appendChild(im);fg.appendChild(el('figcaption','Ligação inesperada pedindo dados? Desligue e ligue você mesmo para o canal oficial.'));d.appendChild(fg);}
+   var d=document.createElement('details');d.appendChild(el('summary',t[0]+' ('+t[1]+')'));
+   var image=THREAT_IMG[t[0]];
+   if(image){
+    var fg=el('figure','','fig'+(image.crop?' fig-crop':''));
+    var im=document.createElement('img');
+    im.src=image.src;im.alt=image.alt;im.width=image.width;im.height=image.height;im.loading='lazy';
+    fg.appendChild(im);fg.appendChild(el('figcaption',image.legenda));d.appendChild(fg);
+   }
    [['O que é e riscos',2],['Como identificar',3],['Como se proteger',4],['O que fazer se acontecer',5]].forEach(function(x){var p=el('p');p.appendChild(el('b',x[0]+': '));p.appendChild(document.createTextNode(t[x[1]]));d.appendChild(p);});
    d.ontoggle=function(){if(d.open)prog('thr',1,1);};l.appendChild(d);
   });
